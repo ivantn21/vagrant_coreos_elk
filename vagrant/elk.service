@@ -1,0 +1,12 @@
+[Unit]
+Description=elk.io  
+Requires=docker.service  
+After=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill elk
+ExecStartPre=-/usr/bin/docker rm elk
+#ExecStartPre=/usr/bin/docker pull sebp/elk
+ExecStart=/usr/bin/docker run -p 5601:5601 -p 9200:9200  -p 5044:5044 -p 5000:5000  -v /var/lib/elasticsearch:/var/lib/elasticsearch -v /etc/logstash/conf.d/:/etc/logstash/conf.d/  -e ES_HEAP_SIZE="2g" --name elk sebp/elk
+ExecStop=/usr/bin/docker stop elk
