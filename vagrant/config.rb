@@ -84,7 +84,8 @@ end
 # $shared_folders = {'/path/on/host' => '/path/on/guest', '/home/foo/app' => '/app'}
 # or, to map host folders to guest folders of the same name,
 # $shared_folders = Hash[*['/home/foo/app1', '/home/foo/app2'].map{|d| [d, d]}.flatten]
-$shared_folders = {'/Users/ivan/Documents/Docker/ES_Data' => '/var/lib/elasticsearch' , '/Users/ivan/Documents/Docker/logstash' => '/etc/logstash/conf.d/'}
+# If you want persistent storage please change this path to your local host path, you can also add a persistent location for logstash configurations
+#$shared_folders = {'Path_To_ES_Storage' => '/var/lib/elasticsearch' , 'Path_To_LogStash_Confs' => '/etc/logstash/conf.d/'}
 
 # Enable port forwarding from guest(s) to host machine, syntax is: { 80 => 8080 }, auto correction is enabled by default.
 #$forwarded_ports = {}
